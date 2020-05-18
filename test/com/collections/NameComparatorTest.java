@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class NameComparatorTest {
 
     @Test
+    //First option test
     void nameComparatorTest() {
         Employee employee1 = new Employee("Kazek", 2000);
         Employee employee2 = new Employee("Dzol", 2500);
@@ -28,13 +29,11 @@ class NameComparatorTest {
 
         ListIterator<Employee> iterator = employeeList.listIterator();
 
-        // nice, but this 'while' seems to be a little bit overcomplicated, test should have rather simple logic - that's the idea of unit tests.
-        // In that case it can be easily done by created fake list or set with proper output values and compare employeeSet1 with this fake set/list.
-        // I will show you later how it can be done here or you can try on your own.
         while (iterator.hasNext()) {
             String firstName = iterator.next().getName();
             if (iterator.hasNext()) {
                 String secondName = iterator.next().getName();
+
                 System.out.println(firstName + "   " + secondName);
                 assertTrue(firstName.compareTo(secondName)<0);
                 iterator.previous();
@@ -42,7 +41,12 @@ class NameComparatorTest {
         }
     }
 
+    // nice, but this 'while' seems to be a little bit overcomplicated, test should have rather simple logic - that's the idea of unit tests.
+    // In that case it can be easily done by created fake list or set with proper output values and compare employeeSet1 with this fake set/list.
+    // I will show you later how it can be done here or you can try on your own.
+
     @Test
+    //Second option test
     void nameComparatorTest2(){
         Employee employee1 = new Employee("Kazek", 2000);
         Employee employee2 = new Employee("Dzol", 2500);
