@@ -1,0 +1,24 @@
+
+//2. Write a program which put one parameter into array list after
+another element with specific value in array list (first or last
+occurrence of this another element - depends on boolean).
+// For example: putToArrayAfterElement(arrayList, 2, 7, false) -
+should put element 2 to arrayList just after first occurrence of 7 in
+array list.
+// arrayList before - {1, 4, 7, 8, 7, 9, 0}, after - {1, 4, 7, 2, 8, 7, 9, 0}
+// putToArrayAfterElement(arrayList, 2, 7, true) - should put element
+2 to arrayList just after last occurrence of 7 in array list.
+// arrayList before - {1, 4, 7, 8, 7, 9, 0}, after - {1, 4, 7, 8, 7, 2, 9, 0}
+// signature: private void putToArrayAfterElement(List<Integer>
+arrayList, int elementToPut, int existingElement, boolean isLast)
+// hint - use methods from ArrayList class
+
+//3. Compare two HashSet objects, return true if sets are exactly same
+(same elements and length) - boolean compare(HashSet<Integer> hashSet,
+HashSet<Integer> hashSet2)
+
+//4. Create class Employee with 2 fields - name and salary. Create
+several objects of Employee class and put them to two TreeSet. First
+one should be able to sort employee objects
+//by name and second one should be able to sort objects based on
+salary. Use two comparators to sort objects properly.
