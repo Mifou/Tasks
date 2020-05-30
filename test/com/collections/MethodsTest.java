@@ -64,7 +64,35 @@ class MethodsTest {
         list.add(employee8);
 
         PriorityQueue<Employee> queue = methods.createPriorityQueue(list);
-        
+
         System.out.println("priority queue: " + queue);
+    }
+
+    @Test
+    void reverseArrayList(){
+        Employee employee1 = new Employee("Kazek", 2000);
+        Employee employee2 = new Employee("Dzol", 2500);
+        Employee employee3 = new Employee("Boyd", 3000);
+        Employee employee4 = new Employee("John", 3500);
+        Employee employee5 = new Employee("Peter Long", 4000);
+        Employee employee6 = new Employee("Albert",1023);
+
+        ArrayList<Employee> list1 = new ArrayList<>();
+        list1.add(employee1);
+        list1.add(employee2);
+        list1.add(employee3);
+        list1.add(employee4);
+        list1.add(employee5);
+        list1.add(employee6);
+
+        ArrayList<Employee> list2 = new ArrayList<>();
+        list2.add(employee6);
+        list2.add(employee5);
+        list2.add(employee4);
+        list2.add(employee3);
+        list2.add(employee2);
+        list2.add(employee1);
+
+        assertEquals(methods.reverseArrayList(list1),list2);
     }
 }

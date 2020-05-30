@@ -31,4 +31,9 @@ public class Methods {
     public PriorityQueue<Employee> createPriorityQueue(List<Employee> list){
         return new PriorityQueue(list);
     }
+
+    public ArrayList reverseArrayList(ArrayList list){
+       Collections.reverse(list);
+       return list;
+    }
 }
