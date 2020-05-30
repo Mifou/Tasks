@@ -1,7 +1,6 @@
 package com.collections;
 
-import java.util.ArrayList;
-import java.util.Set;
+import java.util.*;
 
 public class Methods {
 
@@ -26,5 +25,10 @@ public class Methods {
             return false;
         }
         return (set1.containsAll(set2));
+    }
+
+
+    public PriorityQueue<Employee> createPriorityQueue(List<Employee> list){
+        return new PriorityQueue(list);
     }
 }

@@ -1,6 +1,6 @@
 package com.collections;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
     private String name;
     private int salary;
 
@@ -21,4 +21,10 @@ public class Employee {
     public String toString() {
         return this.name + " " + this.salary;
     }
+
+    @Override
+    public int compareTo(Employee employee) {
+      return this.getName().compareTo(employee.getName());
+    }
+
 }
