@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class MethodsTest {
 
@@ -94,5 +93,15 @@ class MethodsTest {
         list2.add(employee1);
 
         assertEquals(methods.reverseArrayList(list1),list2);
+    }
+
+    @Test void checkIfAnagram(){
+        assertTrue(methods.checkIfAnagram("dupa","upad"));
+        assertTrue(methods.checkIfAnagram("moszna","mszona"));
+        assertTrue(methods.checkIfAnagram("sieckarnia","kaseciarni"));
+
+        assertFalse(methods.checkIfAnagram("dupa","zupa"));
+        assertFalse(methods.checkIfAnagram("drzewo","JavaCollections"));
+
     }
 }
