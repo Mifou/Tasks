@@ -52,19 +52,30 @@ class MethodsTest {
         Employee employee7 = new Employee("Zack", 8000);
         Employee employee8 = new Employee("Bill", 3450);
 
-        List<Employee> list = new ArrayList<>();
-        list.add(employee1);
-        list.add(employee2);
-        list.add(employee3);
-        list.add(employee4);
-        list.add(employee5);
-        list.add(employee6);
-        list.add(employee7);
-        list.add(employee8);
+        List<Employee> list1 = new ArrayList<>();
+        list1.add(employee1);
+        list1.add(employee2);
+        list1.add(employee3);
+        list1.add(employee4);
+        list1.add(employee5);
+        list1.add(employee6);
+        list1.add(employee7);
+        list1.add(employee8);
 
-        PriorityQueue<Employee> queue = methods.createPriorityQueue(list);
+        NameComparator nameComparator = new NameComparator();
 
+        //create queue before sorting list1
+        PriorityQueue<Employee> queue = methods.createPriorityQueue(list1);
         System.out.println("priority queue: " + queue);
+        //sorting list1
+        list1.sort(nameComparator);
+        List<Employee> list2 = new ArrayList<>();
+
+        while(queue.peek() != null) {
+            //create list2 from queue
+            list2.add(queue.poll());
+        }
+        assertTrue(list1.equals(list2));
     }
 
     @Test
