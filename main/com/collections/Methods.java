@@ -59,4 +59,37 @@ public class Methods {
         }
 
     }
+
+    public boolean canBePalindrome(String s) {
+        List<Character> word = new ArrayList<>();
+        List<Character> wordCopy= new ArrayList<>();
+
+        //adding single characters as an elements of Lists
+        for (char c : s.toCharArray()) {
+            word.add(c);
+            wordCopy.add(c);
+        }
+
+        int nonPairsCharacters=0;
+        int counter = 0;
+
+        while(!(word.isEmpty())){
+
+            //counting of quantity every type of character in the word
+            while (word.contains(wordCopy.get(0))){
+               counter++;
+                word.remove(wordCopy.get(0));
+            }
+            //counting of non pairs characters
+            if(counter%2==1){
+                nonPairsCharacters++;
+            }
+            //update wordCopy list
+            wordCopy = List.copyOf(word);
+
+            //set up counter to 0 before next loop
+            counter=0;
+        }
+        return nonPairsCharacters == 1 || nonPairsCharacters == 0;
+    }
 }
