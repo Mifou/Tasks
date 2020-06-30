@@ -119,7 +119,7 @@ class MethodsTest {
     @Test void canBePalindrome(){
         assertTrue(methods.canBePalindrome("kajak"));
         assertTrue(methods.canBePalindrome("kkaaj"));
-        assertTrue(methods.canBePalindrome("kkaagit sta"));
+        assertTrue(methods.canBePalindrome("kkaa"));
         assertFalse(methods.canBePalindrome("abcd"));
         assertFalse(methods.canBePalindrome("kajakk"));
     }
