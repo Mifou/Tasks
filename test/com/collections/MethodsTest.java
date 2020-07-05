@@ -48,7 +48,7 @@ class MethodsTest {
         Employee employee3 = new Employee("Boyd", 3000);
         Employee employee4 = new Employee("John", 3500);
         Employee employee5 = new Employee("Peter Long", 4000);
-        Employee employee6 = new Employee("Albert",1023);
+        Employee employee6 = new Employee("Albert", 1023);
         Employee employee7 = new Employee("Zack", 8000);
         Employee employee8 = new Employee("Bill", 3450);
 
@@ -71,21 +71,21 @@ class MethodsTest {
         list1.sort(nameComparator);
         List<Employee> list2 = new ArrayList<>();
 
-        while(queue.peek() != null) {
+        while (queue.peek() != null) {
             //create list2 from queue
             list2.add(queue.poll());
         }
-        assertTrue(list1.equals(list2));
+        assertEquals(list1, list2);
     }
 
     @Test
-    void reverseArrayList(){
+    void reverseArrayList() {
         Employee employee1 = new Employee("Kazek", 2000);
         Employee employee2 = new Employee("Dzol", 2500);
         Employee employee3 = new Employee("Boyd", 3000);
         Employee employee4 = new Employee("John", 3500);
         Employee employee5 = new Employee("Peter Long", 4000);
-        Employee employee6 = new Employee("Albert",1023);
+        Employee employee6 = new Employee("Albert", 1023);
 
         ArrayList<Employee> list1 = new ArrayList<>();
         list1.add(employee1);
@@ -103,20 +103,22 @@ class MethodsTest {
         list2.add(employee2);
         list2.add(employee1);
 
-        assertEquals(methods.reverseArrayList(list1),list2);
+        assertEquals(methods.reverseArrayList(list1), list2);
     }
 
-    @Test void checkIfAnagram(){
-        assertTrue(methods.checkIfAnagram("dupa","upad"));
-        assertTrue(methods.checkIfAnagram("moszna","mszona"));
-        assertTrue(methods.checkIfAnagram("sieckarnia","kaseciarni"));
+    @Test
+    void checkIfAnagram() {
+        assertTrue(methods.checkIfAnagram("dupa", "upad"));
+        assertTrue(methods.checkIfAnagram("moszna", "mszona"));
+        assertTrue(methods.checkIfAnagram("sieckarnia", "kaseciarni"));
 
-        assertFalse(methods.checkIfAnagram("dupa","zupa"));
-        assertFalse(methods.checkIfAnagram("drzewo","JavaCollections"));
+        assertFalse(methods.checkIfAnagram("dupa", "zupa"));
+        assertFalse(methods.checkIfAnagram("drzewo", "JavaCollections"));
 
     }
 
-    @Test void canBePalindrome(){
+    @Test
+    void canBePalindrome() {
         assertTrue(methods.canBePalindrome("kajak"));
         assertTrue(methods.canBePalindrome("kkaaj"));
         assertTrue(methods.canBePalindrome("kkaa"));
@@ -124,4 +126,41 @@ class MethodsTest {
         assertFalse(methods.canBePalindrome("kajakk"));
     }
 
+    @Test
+    void sumTwoIntArrays() {
+
+        //1 Case
+        int[] array1 = {1, 2, 3};
+        int[] array2 = {9, 9, 9};
+        int[] sumA1andA2 = {1, 1, 2, 2};
+        int[] methodSum1 = methods.sumTwoIntArrays(array1, array2);
+
+        if (sumA1andA2.length == methodSum1.length) {
+            int count1 = 0;
+            for (int i = 0; i < sumA1andA2.length; i++) {
+                if (sumA1andA2[i] != methodSum1[i]) {
+                    count1++;
+                    break;
+                }
+            }
+            assertEquals(0, count1);
+
+        }
+        //2 Case
+        int[] array3 = {1, 7};
+        int[] array4 = {4, 0};
+        int[] sumA3andA4 = {2, 7};
+        int[] methodSum2 = methods.sumTwoIntArrays(array3, array4);
+
+        if (sumA3andA4.length == methodSum2.length) {
+            int count2 = 0;
+            for (int i = 0; i < sumA3andA4.length; i++) {
+                if (sumA3andA4[i] != methodSum2[i]) {
+                    count2++;
+                    break;
+                }
+            }
+            assertEquals(1, count2);
+        }
+    }
 }
