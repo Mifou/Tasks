@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Methods {
 
+
     public ArrayList<Integer> putToArrayAfterElement(ArrayList<Integer> array, int elementToPut, int existingElement, boolean isLast) {
         if (array.contains(existingElement)) {
             if (!isLast) {
@@ -100,14 +101,16 @@ public class Methods {
         StringBuilder stringBuilder1 = new StringBuilder();
         StringBuilder stringBuilder2 = new StringBuilder();
         for (int item : array1) {
-            if (item < 10) {
-                stringBuilder1.append(item);
+            if (item < 0 || item > 9) {
+                throw new IllegalArgumentException("You can put in arrays only digits in 0-9 scope.");
             }
+            stringBuilder1.append(item);
         }
-        for (int value : array2) {
-            if (value < 10) {
-                stringBuilder2.append(value);
+        for (int item : array2) {
+            if (item < 0 || item > 9) {
+                throw new IllegalArgumentException("You can put in arrays only digits in 0-9 scope.");
             }
+            stringBuilder2.append(item);
         }
 
         //Convert string builder to int
@@ -116,6 +119,7 @@ public class Methods {
 
         //calculate arrays sum
         int sum = number1 + number2;
+        String stringSum = String.valueOf(sum);
         int sumcopy = sum;
 
         int digitsNumber = 0;

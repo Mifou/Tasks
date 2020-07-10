@@ -10,6 +10,19 @@ class MethodsTest {
 
     Methods methods = new Methods();
 
+    private boolean compareTwoIntArrays(int[] array1, int[] array2) {
+        if (array1.length == array2.length) {
+            int count1 = 0;
+            for (int i = 0; i < array1.length; i++) {
+                if (array1[i] != array2[i]) {
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
+
     @Test
     void putToArrayAfterElement() {
         ArrayList<Integer> numbers = new ArrayList<>();
@@ -131,36 +144,26 @@ class MethodsTest {
 
         //1 Case
         int[] array1 = {1, 2, 3};
-        int[] array2 = {9, 9, 9};
+        int[] array2 = {7, 9, 9};
         int[] sumA1andA2 = {1, 1, 2, 2};
         int[] methodSum1 = methods.sumTwoIntArrays(array1, array2);
 
-        if (sumA1andA2.length == methodSum1.length) {
-            int count1 = 0;
-            for (int i = 0; i < sumA1andA2.length; i++) {
-                if (sumA1andA2[i] != methodSum1[i]) {
-                    count1++;
-                    break;
-                }
-            }
-            assertEquals(0, count1);
+        assertTrue(compareTwoIntArrays(sumA1andA2,methodSum1));
 
-        }
         //2 Case
-        int[] array3 = {1, 7};
-        int[] array4 = {4, 0};
-        int[] sumA3andA4 = {2, 7};
+        int[] array3 = {9,9};
+        int[] array4 = {1};
+        int[] sumA3andA4 = {1,0,0};
         int[] methodSum2 = methods.sumTwoIntArrays(array3, array4);
 
-        if (sumA3andA4.length == methodSum2.length) {
-            int count2 = 0;
-            for (int i = 0; i < sumA3andA4.length; i++) {
-                if (sumA3andA4[i] != methodSum2[i]) {
-                    count2++;
-                    break;
-                }
-            }
-            assertEquals(1, count2);
-        }
+        assertTrue(compareTwoIntArrays(sumA3andA4,methodSum2));
+
+        //3 Case
+        int[] array5 = {8,7};
+        int[] array6 = {2,9};
+        int[] sumA5andA6 = {1,1,6};
+        int[] methodSum3 = methods.sumTwoIntArrays(array5, array6);
+
+        assertTrue(compareTwoIntArrays(sumA5andA6,methodSum3));
     }
 }
