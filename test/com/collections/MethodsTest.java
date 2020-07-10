@@ -10,6 +10,19 @@ class MethodsTest {
 
     Methods methods = new Methods();
 
+    private boolean compareTwoIntArrays(int[] array1, int[] array2) {
+        if (array1.length == array2.length) {
+            int count1 = 0;
+            for (int i = 0; i < array1.length; i++) {
+                if (array1[i] != array2[i]) {
+                    return false;
+                }
+            }
+
+        }
+        return true;
+    }
+
     @Test
     void putToArrayAfterElement() {
         ArrayList<Integer> numbers = new ArrayList<>();
@@ -48,7 +61,7 @@ class MethodsTest {
         Employee employee3 = new Employee("Boyd", 3000);
         Employee employee4 = new Employee("John", 3500);
         Employee employee5 = new Employee("Peter Long", 4000);
-        Employee employee6 = new Employee("Albert",1023);
+        Employee employee6 = new Employee("Albert", 1023);
         Employee employee7 = new Employee("Zack", 8000);
         Employee employee8 = new Employee("Bill", 3450);
 
@@ -71,21 +84,21 @@ class MethodsTest {
         list1.sort(nameComparator);
         List<Employee> list2 = new ArrayList<>();
 
-        while(queue.peek() != null) {
+        while (queue.peek() != null) {
             //create list2 from queue
             list2.add(queue.poll());
         }
-        assertTrue(list1.equals(list2));
+        assertEquals(list1, list2);
     }
 
     @Test
-    void reverseArrayList(){
+    void reverseArrayList() {
         Employee employee1 = new Employee("Kazek", 2000);
         Employee employee2 = new Employee("Dzol", 2500);
         Employee employee3 = new Employee("Boyd", 3000);
         Employee employee4 = new Employee("John", 3500);
         Employee employee5 = new Employee("Peter Long", 4000);
-        Employee employee6 = new Employee("Albert",1023);
+        Employee employee6 = new Employee("Albert", 1023);
 
         ArrayList<Employee> list1 = new ArrayList<>();
         list1.add(employee1);
@@ -103,20 +116,22 @@ class MethodsTest {
         list2.add(employee2);
         list2.add(employee1);
 
-        assertEquals(methods.reverseArrayList(list1),list2);
+        assertEquals(methods.reverseArrayList(list1), list2);
     }
 
-    @Test void checkIfAnagram(){
-        assertTrue(methods.checkIfAnagram("dupa","upad"));
-        assertTrue(methods.checkIfAnagram("moszna","mszona"));
-        assertTrue(methods.checkIfAnagram("sieckarnia","kaseciarni"));
+    @Test
+    void checkIfAnagram() {
+        assertTrue(methods.checkIfAnagram("dupa", "upad"));
+        assertTrue(methods.checkIfAnagram("moszna", "mszona"));
+        assertTrue(methods.checkIfAnagram("sieckarnia", "kaseciarni"));
 
-        assertFalse(methods.checkIfAnagram("dupa","zupa"));
-        assertFalse(methods.checkIfAnagram("drzewo","JavaCollections"));
+        assertFalse(methods.checkIfAnagram("dupa", "zupa"));
+        assertFalse(methods.checkIfAnagram("drzewo", "JavaCollections"));
 
     }
 
-    @Test void canBePalindrome(){
+    @Test
+    void canBePalindrome() {
         assertTrue(methods.canBePalindrome("kajak"));
         assertTrue(methods.canBePalindrome("kkaaj"));
         assertTrue(methods.canBePalindrome("kkaa"));
@@ -124,4 +139,31 @@ class MethodsTest {
         assertFalse(methods.canBePalindrome("kajakk"));
     }
 
+    @Test
+    void sumTwoIntArrays() {
+
+        //1 Case
+        int[] array1 = {1, 2, 3};
+        int[] array2 = {7, 9, 9};
+        int[] sumA1andA2 = {1, 1, 2, 2};
+        int[] methodSum1 = methods.sumTwoIntArrays(array1, array2);
+
+        assertTrue(compareTwoIntArrays(sumA1andA2,methodSum1));
+
+        //2 Case
+        int[] array3 = {9,9};
+        int[] array4 = {1};
+        int[] sumA3andA4 = {1,0,0};
+        int[] methodSum2 = methods.sumTwoIntArrays(array3, array4);
+
+        assertTrue(compareTwoIntArrays(sumA3andA4,methodSum2));
+
+        //3 Case
+        int[] array5 = {8,7};
+        int[] array6 = {2,9};
+        int[] sumA5andA6 = {1,1,6};
+        int[] methodSum3 = methods.sumTwoIntArrays(array5, array6);
+
+        assertTrue(compareTwoIntArrays(sumA5andA6,methodSum3));
+    }
 }
