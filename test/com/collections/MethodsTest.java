@@ -1,10 +1,12 @@
 package com.collections;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.testng.Assert.*;
+
 
 class MethodsTest {
 
@@ -12,7 +14,6 @@ class MethodsTest {
 
     private boolean compareTwoIntArrays(int[] array1, int[] array2) {
         if (array1.length == array2.length) {
-            int count1 = 0;
             for (int i = 0; i < array1.length; i++) {
                 if (array1[i] != array2[i]) {
                     return false;
@@ -35,10 +36,10 @@ class MethodsTest {
         numbers.add(4);
 
         methods.putToArrayAfterElement(numbers, 7, 5, false);
-        assertEquals(numbers.get(numbers.indexOf(5) + 1), 7);
+        assertEquals((int) numbers.get(numbers.indexOf(5) + 1), 7);
 
         methods.putToArrayAfterElement(numbers, 7, 5, true);
-        assertEquals(numbers.get(numbers.lastIndexOf(5) + 1), 7);
+        assertEquals((int) numbers.get(numbers.lastIndexOf(5) + 1), 7);
     }
 
     @Test
@@ -139,31 +140,52 @@ class MethodsTest {
         assertFalse(methods.canBePalindrome("kajakk"));
     }
 
-    @Test
-    void sumTwoIntArrays() {
+    @Test(dataProvider = "sumOfArrays1DataProvider")
+    void sumTwoIntArrays1(int [] array1, int [] array2, int [] sumA1A2 ) {
+        assertTrue(compareTwoIntArrays(methods.sumTwoIntArrays1(array2, array1), sumA1A2));
+    }
 
-        //1 Case
-        int[] array1 = {1, 2, 3};
-        int[] array2 = {7, 9, 9};
-        int[] sumA1andA2 = {1, 1, 2, 2};
-        int[] methodSum1 = methods.sumTwoIntArrays(array1, array2);
+    @DataProvider(name = "sumOfArrays1DataProvider")
 
-        assertTrue(compareTwoIntArrays(sumA1andA2,methodSum1));
+    public Object[][] getData1() {
+        int[] array1 = {2, 4, 6};
+        int[] array2 = {1, 2};
+        int[] sumA1A2 = {2, 5, 8};
 
-        //2 Case
+        int[] array3 = {9, 8, 7, 6, 2, 5, 9, 8, 6, 2, 5, 9, 8, 6, 5, 2, 3};
+        int[] array4 = {9, 8, 7, 8, 9, 7, 8, 7, 2, 3, 5};
+        int[] sumA3A4 = {9, 8, 7, 6, 2, 6, 9, 7, 4, 1, 5, 7, 7, 3, 7, 5, 8};
+
+        int[] array5 = {1, 2, 3};
+        int[] array6 = {1, 2, 3};
+        int[] sumA5A6 = {2, 4, 6};
+
+
+        return new int[][][]{{array1, array2, sumA1A2},{array3,array4,sumA3A4},{array5,array6,sumA5A6}};
+    }
+
+    @Test(dataProvider = "sumOfArraysDataProvider")
+    void sumTwoIntArrays(int [] array1, int [] array2, int [] sumA1A2 ) {
+        assertTrue(compareTwoIntArrays(methods.sumTwoIntArrays(array2, array1), sumA1A2));
+    }
+
+    @DataProvider(name = "sumOfArraysDataProvider")
+
+    public Object[][] getData() {
+        int[] array1 = {1,2,3};
+        int[] array2 = {7,9,9};
+        int[] sumA1A2 = {1,1,2,2};
+
         int[] array3 = {9,9};
         int[] array4 = {1};
-        int[] sumA3andA4 = {1,0,0};
-        int[] methodSum2 = methods.sumTwoIntArrays(array3, array4);
+        int[] sumA3A4 = {1,0,0};
 
-        assertTrue(compareTwoIntArrays(sumA3andA4,methodSum2));
-
-        //3 Case
         int[] array5 = {8,7};
-        int[] array6 = {2,9};
-        int[] sumA5andA6 = {1,1,6};
-        int[] methodSum3 = methods.sumTwoIntArrays(array5, array6);
+        int[] array6 = {1, 2, 3};
+        int[] sumA5A6 = {2,1,0};
 
-        assertTrue(compareTwoIntArrays(sumA5andA6,methodSum3));
+
+        return new int[][][]{{array1, array2, sumA1A2},{array3,array4,sumA3A4},{array5,array6,sumA5A6}};
     }
 }
+
