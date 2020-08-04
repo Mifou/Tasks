@@ -135,6 +135,9 @@ public class Methods {
             sum = sum / 10;
         }
 
+        reverseArray(array1);
+        reverseArray(array2);
+
         return arraysSum;
     }
 
@@ -148,7 +151,6 @@ public class Methods {
 
     public int[] sumTwoIntArrays1(int[] array1, int[] array2) {
 
-        // reverse Arrays with private method
         reverseArray(array1);
         reverseArray(array2);
 
@@ -158,31 +160,35 @@ public class Methods {
 
         int nextDigit = 0;
 
+
         //find which array is bigger and which smaller
         int lessDigitsAmount = Math.min(array1.length, array2.length);
         int moreDigitsAmount = Math.max(array1.length, array2.length);
 
         //first adding part (the same index value in arrays)
+
         for (int i = 0; i < lessDigitsAmount; i++) {
-            if ((array1[i] + array2[i] + nextDigit) > 9) {
-                sumOfArrays.add((array1[i] + array2[i] + nextDigit) % 10);
+            int firstAddingConstant = array1[i] + array2[i] + nextDigit;
+            if ((firstAddingConstant)  > 9) {
+                sumOfArrays.add((firstAddingConstant) % 10);
                 nextDigit = 1;
             } else {
-                sumOfArrays.add(array1[i] + array2[i] + nextDigit);
+                sumOfArrays.add((firstAddingConstant) );
                 nextDigit = 0;
-
             }
-
         }
+
+
 
         //adding rest 1 case (array1.length > array2.length)
         if (array1.length > array2.length) {
             for (int i = lessDigitsAmount; i < moreDigitsAmount; i++) {
-                if ((array1[i] + nextDigit) > 9) {
-                    sumOfArrays.add((array1[i] + nextDigit) % 10);
+                int firstCaseConstant = array1[i] + nextDigit;
+                if (firstCaseConstant > 9) {
+                    sumOfArrays.add(firstCaseConstant % 10);
                     nextDigit = 1;
                 } else {
-                    sumOfArrays.add(array1[i] + nextDigit);
+                    sumOfArrays.add(firstCaseConstant);
                     nextDigit = 0;
 
                 }
@@ -194,11 +200,12 @@ public class Methods {
         //adding rest 2 case (array2.length > array1.length)
         if (array2.length > array1.length) {
             for (int i = lessDigitsAmount; i < moreDigitsAmount; i++) {
-                if ((array2[i] + nextDigit) > 9) {
-                    sumOfArrays.add((array2[i] + nextDigit) % 10);
+                int secondCaseConstant = array2[i] + nextDigit;
+                if (secondCaseConstant > 9) {
+                    sumOfArrays.add(secondCaseConstant % 10);
                     nextDigit = 1;
                 } else {
-                    sumOfArrays.add(array2[i] + nextDigit);
+                    sumOfArrays.add(secondCaseConstant);
                     nextDigit = 0;
 
                 }
@@ -214,6 +221,8 @@ public class Methods {
         }
 
         Collections.reverse(sumOfArrays);
+        reverseArray(array1);
+        reverseArray(array2);
 
         int[] intSumOfArrays = new int[sumOfArrays.size()];
 
