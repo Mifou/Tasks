@@ -1,9 +1,17 @@
 package com.collections;
-import org.junit.jupiter.api.Test;
-import java.util.*;
-import static org.junit.jupiter.api.Assertions.*;
 
-class NameComparatorTest {
+import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.ListIterator;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
+
+public class NameComparatorTest {
 
     @Test
     //First option test
